@@ -3,18 +3,24 @@ CREATE DATABASE chat;
 USE chat;
 
 CREATE TABLE users (
-  username VARCHAR(30) PRIMARY KEY
+  objectId INTEGER PRIMARY KEY AUTO_INCREMENT,
+  username VARCHAR(30) UNIQUE
 );
+
+INSERT INTO users (username) VALUES ('roberto');
 
 CREATE TABLE messages (
   objectId INTEGER PRIMARY KEY AUTO_INCREMENT,
-  username VARCHAR(30),
   text VARCHAR(140),
   roomname VARCHAR(30),
   createdAt TIMESTAMP,
   updatedAt TIMESTAMP,
+  username VARCHAR(30),
   FOREIGN KEY (username) REFERENCES users (username)
 );
+
+INSERT INTO messages (username, text, roomname)
+  VALUES ('roberto', 'hola homie', 'lobby');
 
 
 
